@@ -43,10 +43,8 @@ class Server:
         """
         Retrieves the appropriate page of the datase
         """
-        assert index is None or (isinstance(index, int) and index >= 0),
-        "Index must be a non-negative integer"
-        assert isinstance(page_size, int)
-        and page_size > 0, "Page size must be a positive integer"
+        assert index is None or (isinstance(index, int) and index >= 0), "int"
+        assert isinstance(page_size, int) and page_size > 0, "Pos int"
 
         dataset = self.indexed_dataset()
         max_index = len(dataset) - 1
