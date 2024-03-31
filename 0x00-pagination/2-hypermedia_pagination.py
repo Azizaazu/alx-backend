@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 2-hypermedia_pagination
 """
@@ -40,14 +39,17 @@ class Server:
         """
         Retrieves the appropriate page of the dataset based
         """
-        assert isinstance(page, int) and page > 0, "Page must be a positive integer"
-        assert isinstance(page_size, int) and page_size > 0, "Page size must be a positive integer"
+        assert isinstance(page, int) and page > 0,
+        "Page must be a positive integer"
+        assert isinstance(page_size, int) and page_size > 0,
+        "Page size must be a positive integer"
 
         start_index, end_index = index_range(page, page_size)
         dataset = self.dataset()
         return dataset[start_index:end_index]
 
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Union[int, List[List], None]]:
+    def get_hyper(self, page: int = 1, page_size: int = 10)
+    -> Dict[str, Union[int, List[List], None]]:
         """
         Retrieves the appropriate page of the dataset
         """
