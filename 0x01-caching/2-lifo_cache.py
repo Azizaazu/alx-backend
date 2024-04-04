@@ -16,6 +16,7 @@ class LIFOCache(BaseCaching):
         Initializes the LIFOCache object.
         """
         super().__init__()
+        self.order = []
 
     def put(self, key, item):
         """
@@ -23,19 +24,22 @@ class LIFOCache(BaseCaching):
         for the given key.
         """
         if key is None or item is None:
-            return
-
-        if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-            last_key = next(reversed(self.cache_data))
-            print("DISCARD:", last_key)
-            del self.cache_data[last_key]
-
-        self.cache_data[key] = item
+            pass
+        else:
+            length = len(self.cache_data)
+            if length >= BaseCaching.MAX_ITEMS and key not in self.cache_data:
+                print("DISCARD: {}".format(self.order[-1]))
+                del self.cache_data[self.order[-1]]
+                del self.order[-1]
+            if key in self.order:
+                del self.order[self.order.index(key)]
+            self.order.append(key)
+            self.cache_data[key] = item
 
     def get(self, key):
         """
         Returns the value linked to the given key in self.cache_data.
         """
-        if key is None or key not in self.cache_data:
-            return None
-        return self.cache_data[key]
+        if key is not None or key in self.cache_data.keys():
+            return self.cache_data[key]
+        return None
