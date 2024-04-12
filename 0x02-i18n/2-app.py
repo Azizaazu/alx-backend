@@ -11,7 +11,7 @@ from flask import (
 from flask_babel import Babel
 
 
-class Config:
+class Config(object):
     """
     Config class for Flask app
     """
@@ -42,5 +42,5 @@ def index() -> str:
 
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000", debug=True)
