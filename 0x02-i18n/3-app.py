@@ -3,8 +3,13 @@
 3-app.py
 Basic Flask app with a single route '/'
 """
-from flask import Flask, render_template, request
+from flask import (
+        Flask,
+        render_template,
+        request
+)
 from flask_babel import Babel
+
 
 class Config:
     """
@@ -30,7 +35,7 @@ def get_locale() -> str:
 
 
 @app.route('/', strict_slashes=False)
-def index() -> str:
+def get_index() -> str:
     """
     Renders index.html template
     """
@@ -38,4 +43,4 @@ def index() -> str:
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port="5000")
