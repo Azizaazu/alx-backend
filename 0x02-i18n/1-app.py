@@ -6,7 +6,7 @@ Basic Flask app with a single route '/'
 from flask import Flask, render_template
 from flask_babel import Babel
 
-class Config:
+class Config(object):
     """
     Config class for Flask app
     """
