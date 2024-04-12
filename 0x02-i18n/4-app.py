@@ -26,7 +26,7 @@ app.config.from_object(Config)
 
 
 @babel.localeselector
-def get_locale() -> str:
+def get_locale():
     """
      Select and return best language match based on supported languages
     """
@@ -36,7 +36,7 @@ def get_locale() -> str:
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
-@app.route('/')
+@app.route('/', strict_slashes=False)
 def index() -> str:
     """
     Renders index.html template
